@@ -1,7 +1,7 @@
 // File: src/components/Input.js
 import React from 'react';
 
-function Input({ name, value, onChange, placeholder, prefix, suffix, required }) {
+function Input({ name, value, onChange, placeholder, prefix, suffix, required, id }) {
   return (
     <>
     <style>
@@ -63,6 +63,7 @@ function Input({ name, value, onChange, placeholder, prefix, suffix, required })
           value={value}
           onChange={onChange}
           placeholder={placeholder}
+          id={id}
         />
         {suffix && <span className="input-suffix">{suffix}</span>}
       </div>

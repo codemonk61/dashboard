@@ -34,7 +34,7 @@ const Login = () => {
             if (user) {
                 // Store session in localStorage
                 localStorage.setItem("session", JSON.stringify(user));
-                navigate("/main");
+                navigate("/dashboard");
             } else {
                 alert("Invalid username or password");
             }
@@ -57,7 +57,6 @@ const Login = () => {
             <div className="login__wrapper">
                 <div>
                     <h2>Login</h2>
-                    <form onSubmit={formik.handleSubmit}>
                         <div>
                             <Input
                                 placeholder="Enter Username"
@@ -67,6 +66,7 @@ const Login = () => {
                                 value={formik.values.username}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
+                                id={"username"}
                             />
                             {formik.touched.username && formik.errors.username ? (
                                 <div style={{ color: "red" }}>{formik.errors.username}</div>
@@ -81,19 +81,20 @@ const Login = () => {
                                 value={formik.values.password}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
+                                id={'password'}
                             />
                             {formik.touched.password && formik.errors.password ? (
                                 <div style={{ color: "red" }}>{formik.errors.password}</div>
                             ) : null}
                         </div>
-                        <Button appearance="primary" label="LOGIN" type="submit" style={{ marginTop: "10px" }} />
+                        <Button appearance="primary"  label="LOGIN" onClick={formik.handleSubmit} type="submit" style={{ marginTop: "10px" }} />
                         <div style={{ marginTop: "10px" }}>
                             Don't have an account?{" "}
                             <span onClick={() => navigate("/signup")} style={{ color: "blue", textDecoration: "underline" }}>
                                 Sign Up
                             </span>
                         </div>
-                    </form>
+            
                 </div>
             </div>
         </>

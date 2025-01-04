@@ -1,6 +1,6 @@
 import React from "react";
 
-const Button = ({ appearance = "default", label, onClick, icon }) => {
+const Button = ({ appearance = "default", label, onClick, icon, type }) => {
   return (
     <>
     <style>
@@ -55,6 +55,7 @@ const Button = ({ appearance = "default", label, onClick, icon }) => {
     <button
       className={`custom-button ${appearance === "primary" ? "primary" : "default"}`}
       onClick={onClick}
+      type={type}
     >
       {icon && <span className="button-icon">{icon}</span>}
       {label}

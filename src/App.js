@@ -11,8 +11,20 @@ const ProtectedRoute = ({ children }) => {
   return session ? children : <Navigate to="/login" />;
 };
 
+const globalStyle = `
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+`
+
 const App = () => {
   return (
+    <>
+    <style>
+    {
+      globalStyle
+    }
+    </style>
     <Router>
       <Routes>
         <Route path="/login" element={<Login/>} />
@@ -29,6 +41,7 @@ const App = () => {
         <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </Router>
+    </>
   );
 };
 
