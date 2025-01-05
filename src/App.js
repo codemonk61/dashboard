@@ -12,8 +12,10 @@ const ProtectedRoute = ({ children }) => {
 };
 
 const globalStyle = `
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
   margin: 0;
   padding: 0;
+  font-family: "Montserrat", serif;
   box-sizing: border-box;
 `
 

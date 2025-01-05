@@ -13,7 +13,7 @@ const Button = ({ appearance = "default", label, onClick, icon, type }) => {
   padding: 10px 20px;
   border-radius: 4px;
   cursor: pointer;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 8px; /* Space between icon and label */
   transition: background-color 0.3s ease, border-color 0.3s ease;

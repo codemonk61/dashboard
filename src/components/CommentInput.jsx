@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Send from "./icons/Send";
 
 const CommentInput = ({ placeholder = "Add a comment...", onSend }) => {
   const [comment, setComment] = useState("");
@@ -28,7 +29,6 @@ const CommentInput = ({ placeholder = "Add a comment...", onSend }) => {
   padding: 5px 10px;
   background-color: #fff;
   width: 100%;
-  max-width: 400px;
   box-sizing: border-box;
 }
 
@@ -79,7 +79,7 @@ const CommentInput = ({ placeholder = "Add a comment...", onSend }) => {
         onClick={handleSendClick}
         disabled={!comment.trim()} // Disable button when input is empty
       >
-        ▶
+        <Send/>
       </button>
     </div>
     </>

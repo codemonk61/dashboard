@@ -1,11 +1,8 @@
 import React, { useState } from "react";
+import ChevronDown from "./icons/ChevronDown";
+import Calendar from "./icons/Calendar";
 
-const DatePicker = () => {
-  const [selectedDate, setSelectedDate] = useState("");
-
-  const handleDateChange = (event) => {
-    setSelectedDate(event.target.value);
-  };
+const DatePicker = ({id, onChange, value}) => {
 
   return (
     <>
@@ -13,9 +10,11 @@ const DatePicker = () => {
         {
             `
             .date-picker-container {
+  flex: 1;
   display: flex;
   flex-direction: column;
   margin: 10px 0;
+    padding: 0px 12px;
 }
 
 /* Label styling */
@@ -88,20 +87,22 @@ const DatePicker = () => {
         Invoice Due Date <span className="required">*</span>
       </label>
       <div className="date-picker-wrapper">
-        <span className="calendar-icon">📅</span>
+        <span className="calendar-icon">
+          <Calendar/>
+        </span>
         <input
           type="date"
-          id="invoice-due-date"
-          value={selectedDate}
-          onChange={handleDateChange}
+          id={id}
+          value={value}
+          onChange={onChange}
           className="date-picker-input"
         />
         <button
           type="button"
           className="custom-dropdown-icon"
-          onClick={() => document.getElementById("invoice-due-date").showPicker()} // Trigger the native date picker
+          onClick={() => document.getElementById(`${id}`).showPicker()} // Trigger the native date picker
         >
-          ▼
+          <ChevronDown/>
         </button>
       </div>
     </div>

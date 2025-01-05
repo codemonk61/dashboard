@@ -1,4 +1,5 @@
 import React from 'react';
+import ChevronDown from './icons/ChevronDown';
 
 function SelectPicker({ label, options, value, onChange, placeholder }) {
   return (
@@ -7,6 +8,8 @@ function SelectPicker({ label, options, value, onChange, placeholder }) {
         {
             `
             .select-picker {
+            flex:1;
+              padding: 0px 12px;
   display: flex;
   flex-direction: column;
   margin-bottom: 16px;
@@ -61,7 +64,9 @@ function SelectPicker({ label, options, value, onChange, placeholder }) {
             <option key={index} value={option.value}>{option.label}</option>
           ))}
         </select>
-        <div className="arrow">▼</div>
+        <div className="arrow">
+          <ChevronDown/>
+        </div>
       </div>
     </div>
     </>

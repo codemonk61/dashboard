@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import Dollar from "./icons/Dollar";
+import Percentage from "./icons/Percentage";
 
 const ToggleButton = ({ 
-  options = ["$", "%"], 
+  options = [<Dollar fill="white"/>, <Percentage/>], 
   defaultSelected = 0, 
   onToggle 
 }) => {

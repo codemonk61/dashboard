@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Upload from "./icons/Upload";
 
 const FileUploader = ({ label = "Upload File", onFileChange }) => {
   const [fileName, setFileName] = useState("");
@@ -71,7 +72,9 @@ const FileUploader = ({ label = "Upload File", onFileChange }) => {
       <label className="upload-button">
         {label}
         <input type="file" onChange={handleFileChange} className="upload-input" />
-        <span className="upload-icon">↑</span>
+        <span className="upload-icon">
+          <Upload/>
+        </span>
       </label>
       {fileName && <div className="file-name">{fileName}</div>}
     </div>

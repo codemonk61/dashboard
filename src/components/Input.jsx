@@ -8,6 +8,8 @@ function Input({ name, value, onChange, placeholder, prefix, suffix, required, i
         {
             `
              .input-container {
+             flex:1;
+               padding: 0px 12px;
   display: flex;
   flex-direction: column;
   margin-bottom: 16px;
