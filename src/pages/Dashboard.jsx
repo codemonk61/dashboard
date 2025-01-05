@@ -16,7 +16,8 @@ import ArrowWithTail from '../components/icons/ArrowWithTail'
 import Building from '../components/icons/Building'
 import InvoiceIcon from '../components/icons/InvoiceIcon'
 import Message from '../components/icons/Message'
-import Dollar from '../components/icons/Dollar'
+import Plus from '../components/icons/Plus';
+import ThreeDot from '../components/icons/ThreeDot';
 
 const imageUrl = `https://s3-alpha-sig.figma.com/img/16b9/71b5/374d35591cf107df0cbf15334675279b?Expires=1736726400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=HOm0N8kwEjYLyLRnohYhRbb0qDMDTqQcnmu~ixW~D-jucpU1XcGE80kbQhMEY~yW19mWjo7M3BVMa5qp3d67egt~2pl69GMy8tw3bWdM93GlLhPrN16sXCnmhiX5ixM0mq1Sm4yUhQly~8Q1Lyhrb8fq~7nSHyS1BtvXzCEMVtNjr4yocSfZe8IYxFbWLQOdwgTFp2Pwiwx-3PnuFb08ogmlz8P0RaYGsmnYLJwM9bRhd4roXMKMH9VTM6abI7DxqLML21I8Yz~wS~XejsRKjnYMUrfZzYmn~ZMfXihVc5GWuc2BaGhmj-52F6iHdL6HC-8tqW7HyQ146hLhL62Gbw__`
 const styles = `
@@ -69,7 +70,6 @@ const styles = `
  padding: 12px;
  display: flex;
  align-items: center;
- justify-content: space-between;
  position:sticky;
  bottom:0;
  background: white;
@@ -89,47 +89,57 @@ const styles = `
    .tab__wrapper{
      flex:1
    }
+.add__expense_btn{
+display: flex;
+justify-content: end
+}
+.comment{
+margin: 20px 0px;
+}
+.btn{
+ flex:1
+}
 `
 
 const Dashboard = () => {
 
     const formik = useFormik({
         initialValues: {
-          vendor: "",
-          purchaseOrder: "",
-          invoiceNumber: "",
-          invoiceDate: "",
-          totalAmount: "",
-          paymentTerms: "",
-          invoiceDueDate: "",
-          glPostDate: "",
-          invoiceDescription: "",
-          lineAmount: "",
-          department: "",
-          account: "",
-          location: "",
-          expenseDescription: "",
-          toggleOption: "$",
-          comment: "",
+            vendor: "",
+            purchaseOrder: "",
+            invoiceNumber: "",
+            invoiceDate: "",
+            totalAmount: "",
+            paymentTerms: "",
+            invoiceDueDate: "",
+            glPostDate: "",
+            invoiceDescription: "",
+            lineAmount: "",
+            department: "",
+            account: "",
+            location: "",
+            expenseDescription: "",
+            toggleOption: "$",
+            comment: "",
         },
         validationSchema: Yup.object({
-          invoiceNumber: Yup.string().required("Invoice Number is required"),
-          invoiceDate: Yup.date().required("Invoice Date is required"),
-          totalAmount: Yup.number()
-            .required("Total Amount is required")
-            .positive("Amount must be positive"),
-          invoiceDueDate: Yup.date().required("Invoice Due Date is required"),
-          glPostDate: Yup.date().required("GL Post Date is required"),
-          lineAmount: Yup.number()
-            .required("Line Amount is required")
-            .positive("Amount must be positive"),
+            invoiceNumber: Yup.string().required("Invoice Number is required"),
+            invoiceDate: Yup.date().required("Invoice Date is required"),
+            totalAmount: Yup.number()
+                .required("Total Amount is required")
+                .positive("Amount must be positive"),
+            invoiceDueDate: Yup.date().required("Invoice Due Date is required"),
+            glPostDate: Yup.date().required("GL Post Date is required"),
+            lineAmount: Yup.number()
+                .required("Line Amount is required")
+                .positive("Amount must be positive"),
         }),
         onSubmit: (values) => {
-          console.log("Form Submitted: ", values);
-          alert("Invoice submitted successfully!");
+            console.log("Form Submitted: ", values);
+            alert("Invoice submitted successfully!");
         },
-      });
-    
+    });
+
 
     const handleTabChange = (activeIndex) => {
         console.log("Active Tab Index:", activeIndex);
@@ -139,7 +149,7 @@ const Dashboard = () => {
         { value: 'PO123', label: 'PO123' },
         { value: 'PO456', label: 'PO456' },
         { value: 'PO789', label: 'PO789' },
-      ];
+    ];
 
     return (
         <>
@@ -176,7 +186,7 @@ const Dashboard = () => {
                 <div className='right__section'>
                     <div>
                         <Heading
-                            icon={<Building/>}
+                            icon={<Building />}
                             text="Vandor Details"
                             iconBackground="#EAF4FF"
                             textColor="#000"
@@ -195,7 +205,7 @@ const Dashboard = () => {
                         <Text color="gray" body="10px">550 main st., lynn</Text>
                         <Text color="blue" body="10px" align="center" mb="35px">View Vendor Details</Text>
                         <Heading
-                            icon={<InvoiceIcon/>}
+                            icon={<InvoiceIcon />}
                             text="Invoice Details"
                             iconBackground="#EAF4FF"
                             textColor="#000"
@@ -282,7 +292,7 @@ const Dashboard = () => {
                             <Text RenderAs="span" body="14px" fontWeight="200" mt="16px" mb="16px">$ 0.00{" "}</Text>/
                             <Text color="blue" RenderAs="span" body="14px" fontWeight="200" mt="16px" mb="16px">{" "}$ 0.00</Text>
                             <ToggleButton
-                        
+
                                 defaultSelected={0}
                                 onToggle={() => { }}
                             />
@@ -328,24 +338,29 @@ const Dashboard = () => {
                         placeholder="Enter Invoice Number"
                         required
                     />
-                    <Button appearance="default" label="Add Expense coding" onClick={() => { }} icon={<>+</>} />
+                    <div className='add__expense_btn'>
+                        <Button appearance="default" block={false} label="Add Expense coding" onClick={() => { }} icon={<Plus />} />
+                    </div>
+
                     <Heading
-                        icon={<Message/>}
+                        icon={<Message />}
                         text="Comments"
                         iconBackground="#EAF4FF"
                         textColor="#000"
                     />
+                    <div className='comment'>
                     <CommentInput
                         placeholder="Add a comment and use @Name to tag someone"
                         onSend={() => { }}
                     />
-                    <div className='btn__wrapper'>
-                        <div>|</div>
-                        <div>
-                            <Button appearance="default" label="Save as Draft" onClick={() => { }} />
+                    </div>
+                    <div className='btn__wrapper'  >
+                        <ThreeDot/>
+                        <div className='btn'>
+                            <Button block appearance="default" label="Save as Draft" onClick={() => { }} />
                         </div>
-                        <div>
-                            <Button appearance="primary" label="Submit and New" onClick={() => { }} />
+                        <div className='btn'>
+                            <Button block appearance="primary" label="Submit and New" onClick={() => { }} />
                         </div>
                     </div>
                 </div>

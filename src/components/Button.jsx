@@ -1,6 +1,6 @@
 import React from "react";
 
-const Button = ({ appearance = "default", label, onClick, icon, type }) => {
+const Button = ({ appearance = "default", label, onClick, icon, type, block }) => {
   return (
     <>
     <style>
@@ -13,8 +13,10 @@ const Button = ({ appearance = "default", label, onClick, icon, type }) => {
   padding: 10px 20px;
   border-radius: 4px;
   cursor: pointer;
-  display: flex;
+  display: inline-flex;
   align-items: center;
+   ${block ? `width: 100%`: null};
+  justify-content: center;
   gap: 8px; /* Space between icon and label */
   transition: background-color 0.3s ease, border-color 0.3s ease;
 }
