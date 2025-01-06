@@ -70,7 +70,8 @@ const styles = `
  padding: 12px;
  display: flex;
  align-items: center;
- position:sticky;
+ justify-content: space-between;
+ position: sticky;
  bottom:0;
  background: white;
  z-index: 9;
@@ -96,9 +97,13 @@ justify-content: end
 .comment{
 margin: 20px 0px;
 }
-.btn{
- flex:1
+
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
+
  @media (max-width: 768px){
    .invoice__wrapper{
      flex-direction: column
@@ -386,10 +391,12 @@ const Dashboard = () => {
                     <div className='btn__wrapper'  >
                         <ThreeDot />
                         <div className='btn'>
+                        <div>
                             <Button block appearance="default" label="Save as Draft" onClick={() => { }} />
                         </div>
-                        <div className='btn'>
+                        <div >
                             <Button block appearance="primary" label="Submit and New" onClick={formik.handleSubmit} />
+                        </div>
                         </div>
                     </div>
                 </div>
