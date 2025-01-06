@@ -103,6 +103,18 @@ margin: 20px 0px;
    .invoice__wrapper{
      flex-direction: column
    }
+    .header{
+      flex-direction: column;
+       align-items: flex-start;
+    }
+    .left__section {
+      position: static
+    }
+    .input__wrapper{
+      flex-direction: column;
+      flex: 1;
+      align-items: flex-start
+    }
  }
 `
 
@@ -157,7 +169,6 @@ const Dashboard = () => {
         { value: 'PO789', label: 'PO789' },
     ];
 
-    console.log(">>>",formik.values)
 
     return (
         <>

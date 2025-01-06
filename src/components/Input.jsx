@@ -6,11 +6,13 @@ function Input({ label, name, value, onChange, placeholder, prefix, suffix, requ
       <style>
         {`
           .input-container {
+            box-sizing: border-box;
             flex: 1;
             padding: 0px 12px;
             display: flex;
             flex-direction: column;
             margin-bottom: 16px;
+            width: 100%;
           }
 
           .input-container label {

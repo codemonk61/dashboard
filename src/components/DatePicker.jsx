@@ -8,11 +8,13 @@ const DatePicker = ({ id, onChange, value, label, required }) => {
       <style>
         {`
           .date-picker-container {
+           box-sizing: border-box;
             flex: 1;
             display: flex;
             flex-direction: column;
             margin: 10px 0;
             padding: 0px 12px;
+            width: 100%;
           }
 
           .date-picker-label {
