@@ -99,6 +99,11 @@ margin: 20px 0px;
 .btn{
  flex:1
 }
+ @media (max-width: 768px){
+   .invoice__wrapper{
+     flex-direction: column
+   }
+ }
 `
 
 const Dashboard = () => {
