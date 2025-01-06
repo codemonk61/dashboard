@@ -15,7 +15,6 @@ const Button = ({ appearance = "default", label, onClick, icon, type, block }) =
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-   ${block ? `width: 100%`: null};
   justify-content: center;
   gap: 8px; /* Space between icon and label */
   transition: background-color 0.3s ease, border-color 0.3s ease;
