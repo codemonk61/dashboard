@@ -121,6 +121,7 @@ const Dashboard = () => {
             expenseDescription: "",
             toggleOption: "$",
             comment: "",
+            description: "",
         },
         validationSchema: Yup.object({
             invoiceNumber: Yup.string().required("Invoice Number is required"),
@@ -150,6 +151,8 @@ const Dashboard = () => {
         { value: 'PO456', label: 'PO456' },
         { value: 'PO789', label: 'PO789' },
     ];
+
+    console.log(">>>",formik.values)
 
     return (
         <>
@@ -197,10 +200,11 @@ const Dashboard = () => {
 
                         <SelectPicker
                             label="Vendor"
+                            name="vendor"
                             options={poOptions}
                             value={formik.values.vendor}
-                            onChange={(value) => formik.setFieldValue("vendor", value)}
-                            placeholder="Select PO Number"
+                            onChange={formik.handleChange}
+                            placeholder="Select Vendor"
                         />
                         <Text color="gray" body="10px">550 main st., lynn</Text>
                         <Text color="blue" body="10px" align="center" mb="35px">View Vendor Details</Text>
@@ -216,9 +220,10 @@ const Dashboard = () => {
 
                         <SelectPicker
                             label="Purchase Order Number"
-                            options={[]}
-                            value={''}
-                            onChange={() => { }}
+                            name="purchaseOrder"
+                            options={poOptions}
+                            value={formik.values.purchaseOrder}
+                            onChange={formik.handleChange}
                             placeholder="Select PO Number"
                         />
                         <Text body="20px" fontWeight="600" mt="16px" mb="16px">
@@ -226,33 +231,36 @@ const Dashboard = () => {
                         </Text>
                         <div className='input__wrapper'>
                             <Input
-                                name="Invoice Number"
-                                value={""}
-                                onChange={() => { }}
+                                label={'Invoice Number'}
+                                name="invoiceNumber"
+                                value={formik.values.invoiceNumber}
+                                onChange={formik.handleChange}
                                 placeholder="Enter Invoice Number"
                                 required
                             />
                             <DatePicker
                                 label="Invoice Date"
+                                id="invoice_date"
                                 value={formik.values.invoiceDate}
-                                onChange={(value) => formik.setFieldValue("invoiceDate", value)}
+                                onChange={(value) => formik.setFieldValue("invoiceDate", value)} // Set field value directly
                                 placeholder="MM/DD/YYYY"
                                 required
-                                id={'invoice_date'}
                             />
                         </div>
                         <div className='input__wrapper'>
                             <Input
-                                name="Total Amount"
-                                value={""}
+                                label={"Total Amount"}
+                                name="totalAmount"
+                                value={formik.values.totalAmount}
                                 prefix={'$'}
-                                onChange={() => { }}
+                                onChange={formik.handleChange}
                                 placeholder="Enter Invoice Number"
                                 required
                             />
                             <SelectPicker
-                                label="PaymentTerms"
-                                options={[]}
+                                label="Payment Terms"
+                                 name="paymentTerms"
+                                options={poOptions}
                                 value={formik.values.paymentTerms}
                                 onChange={formik.handleChange}
                                 placeholder="Select PO Number"
@@ -262,7 +270,7 @@ const Dashboard = () => {
                             <DatePicker
                                 label="Invoice Due Date"
                                 value={formik.values.invoiceDueDate}
-                                onChange={formik.handleChange}
+                                onChange={(value) => formik.setFieldValue("invoiceDueDate", value)}
                                 placeholder="MM/DD/YYYY"
                                 required
                                 id={'invoice_due_date'}
@@ -270,7 +278,7 @@ const Dashboard = () => {
                             <DatePicker
                                 label="Gl Post Date"
                                 value={formik.values.glPostDate}
-                                onChange={formik.handleChange}
+                                onChange={(value) => formik.setFieldValue("glPostDate", value)}
                                 placeholder="MM/DD/YYYY"
                                 required
                                 id={'gl_post_date'}
@@ -278,9 +286,10 @@ const Dashboard = () => {
                         </div>
                     </div>
                     <Input
-                        name="Invoice Description"
-                        value={""}
-                        onChange={() => { }}
+                        label="Invoice Description"
+                        name="invoiceDescription"
+                        value={formik.values.invoiceDescription}
+                        onChange={formik.handleChange}
                         placeholder="Enter Invoice Number"
                         required
                     />
@@ -292,7 +301,6 @@ const Dashboard = () => {
                             <Text RenderAs="span" body="14px" fontWeight="200" mt="16px" mb="16px">$ 0.00{" "}</Text>/
                             <Text color="blue" RenderAs="span" body="14px" fontWeight="200" mt="16px" mb="16px">{" "}$ 0.00</Text>
                             <ToggleButton
-
                                 defaultSelected={0}
                                 onToggle={() => { }}
                             />
@@ -300,41 +308,46 @@ const Dashboard = () => {
                     </div>
                     <div className='input__wrapper'>
                         <Input
-                            name="Line Amount"
-                            value={""}
+                            label='Line Amount'
+                            name="lineAmount"
+                            value={formik.values.lineAmount}
                             prefix="$"
-                            onChange={() => { }}
+                            onChange={formik.handleChange}
                             placeholder="Enter Invoice Number"
                             required
                         />
                         <SelectPicker
                             label="Department"
-                            options={[]}
-                            value={''}
-                            onChange={() => { }}
+                            name="department"
+                            options={poOptions}
+                            value={formik.values.department}
+                            onChange={formik.handleChange}
                             placeholder="Select PO Number"
                         />
                     </div>
                     <div className='input__wrapper'>
                         <SelectPicker
                             label="Account"
-                            options={[]}
-                            value={''}
-                            onChange={() => { }}
+                            name="account"
+                            options={poOptions}
+                            value={formik.values.account}
+                            onChange={formik.handleChange}
                             placeholder="Select PO Number"
                         />
                         <SelectPicker
                             label="Location"
-                            options={[]}
-                            value={''}
-                            onChange={() => { }}
+                            name="location"
+                            options={poOptions}
+                            value={formik.values.location}
+                            onChange={formik.handleChange}
                             placeholder="Select PO Number"
                         />
                     </div>
                     <Input
-                        name="Invoice Description"
-                        value={""}
-                        onChange={() => { }}
+                        label="Invoice Description"
+                        name="description"
+                        value={formik.values.description}
+                        onChange={formik.handleChange}
                         placeholder="Enter Invoice Number"
                         required
                     />
@@ -349,18 +362,18 @@ const Dashboard = () => {
                         textColor="#000"
                     />
                     <div className='comment'>
-                    <CommentInput
-                        placeholder="Add a comment and use @Name to tag someone"
-                        onSend={() => { }}
-                    />
+                        <CommentInput
+                            placeholder="Add a comment and use @Name to tag someone"
+                            onSend={() => { }}
+                        />
                     </div>
                     <div className='btn__wrapper'  >
-                        <ThreeDot/>
+                        <ThreeDot />
                         <div className='btn'>
                             <Button block appearance="default" label="Save as Draft" onClick={() => { }} />
                         </div>
                         <div className='btn'>
-                            <Button block appearance="primary" label="Submit and New" onClick={() => { }} />
+                            <Button block appearance="primary" label="Submit and New" onClick={formik.handleSubmit} />
                         </div>
                     </div>
                 </div>
