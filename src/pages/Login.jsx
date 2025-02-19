@@ -61,7 +61,7 @@ const Login = () => {
                             <Input
                                 placeholder="Enter Username"
                                 name="username"
-                                label="username"
+                                label="USERNAME"
                                 required
                                 type="text"
                                 value={formik.values.username}
@@ -79,7 +79,7 @@ const Login = () => {
                                 required
                                 type="password"
                                 name="password"
-                                label="password"
+                                label="PASSWORD"
                                 value={formik.values.password}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
